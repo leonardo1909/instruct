@@ -1,0 +1,218 @@
+[
+    {
+        "model": "feriados.estado",
+        "pk": "76299c83-8eb5-4935-a08f-f33ec00e6cbd",
+        "fields": {
+            "codigo_ibge": "12",
+            "nome": "AC"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "7a69914d-cfd3-471e-bd8f-904ce3494c8a",
+        "fields": {
+            "codigo_ibge": "27",
+            "nome": "AL"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "36cd8b3a-9e68-477b-abfc-54f591dd12c5",
+        "fields": {
+            "codigo_ibge": "16",
+            "nome": "AP"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "bcf5a382-2406-42ed-8937-a6ca6a468f5f",
+        "fields": {
+            "codigo_ibge": "13",
+            "nome": "Am"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "9130ce43-f181-4635-a417-8cfa377051b8",
+        "fields": {
+            "codigo_ibge": "29",
+            "nome": "BA"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "f1d7d507-82f8-4f0e-a3f1-09d29e367833",
+        "fields": {
+            "codigo_ibge": "23",
+            "nome": "CE"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "42c1fdce-2e5a-4585-8370-1fcac41d2262",
+        "fields": {
+            "codigo_ibge": "53",
+            "nome": "DF"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "dd4fc811-0d90-4af7-bada-473aa2508ddf",
+        "fields": {
+            "codigo_ibge": "32",
+            "nome": "ES"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "58b39a75-6af8-49cc-a440-64c20ca9fa6f",
+        "fields": {
+            "codigo_ibge": "52",
+            "nome": "GO"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "f283be22-de2e-4a00-9590-4a82f7683623",
+        "fields": {
+            "codigo_ibge": "21",
+            "nome": "MA"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "cd0636c4-34fc-4256-9ad0-5e0197874b06",
+        "fields": {
+            "codigo_ibge": "51",
+            "nome": "MT"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "2cfa008e-8f5b-44d2-99d1-1237b3321503",
+        "fields": {
+            "codigo_ibge": "50",
+            "nome": "MS"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "adae84e7-983c-49a1-85dd-51089c92ff3f",
+        "fields": {
+            "codigo_ibge": "31",
+            "nome": "MG"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "d7180f3c-4f6a-42fe-8fc4-94f84ca19172",
+        "fields": {
+            "codigo_ibge": "15",
+            "nome": "PA"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "985a5178-a0cd-417e-9269-339b399be36b",
+        "fields": {
+            "codigo_ibge": "25",
+            "nome": "PB"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "11608dd0-69dd-40ac-ae92-e924f34ea57f",
+        "fields": {
+            "codigo_ibge": "41",
+            "nome": "PR"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "3ddaaa90-c007-4722-8823-7a2c6f0c363f",
+        "fields": {
+            "codigo_ibge": "26",
+            "nome": "PE"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "9a8f0629-b651-4353-96af-62015aca2ece",
+        "fields": {
+            "codigo_ibge": "22",
+            "nome": "PI"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "72843ad0-e73f-4acd-b6a3-7f3ca7eab7de",
+        "fields": {
+            "codigo_ibge": "33",
+            "nome": "RJ"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "1aa8eac1-d8e6-4316-a3b7-737c68b4842a",
+        "fields": {
+            "codigo_ibge": "24",
+            "nome": "RN"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "5067b5ae-58d8-4215-84e4-06b596eed39f",
+        "fields": {
+            "codigo_ibge": "43",
+            "nome": "RS"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "80d780fc-2e2e-43d2-b339-ea477f54efbf",
+        "fields": {
+            "codigo_ibge": "11",
+            "nome": "RO"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "30f5dc7f-b8b6-4ea1-8952-0526aa110a40",
+        "fields": {
+            "codigo_ibge": "14",
+            "nome": "RR"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "0c8e5126-0912-42eb-afb7-80c098cdfba3",
+        "fields": {
+            "codigo_ibge": "42",
+            "nome": "SC"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "1bbdd09b-4509-4253-a5ea-038d29a25e70",
+        "fields": {
+            "codigo_ibge": "35",
+            "nome": "SP"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "d2427279-30cc-41a7-b88a-b3e0c21c779b",
+        "fields": {
+            "codigo_ibge": "28",
+            "nome": "SE"
+        }
+    },
+    {
+        "model": "feriados.estado",
+        "pk": "9d59b167-47fa-41b7-8784-4254bcc37c7a",
+        "fields": {
+            "codigo_ibge": "17",
+            "nome": "TO"
+        }
+    }
+]

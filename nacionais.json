@@ -1,0 +1,66 @@
+[
+    {
+      "model": "feriados.feriado",
+      "pk": "273bad6b-0cb2-451c-bd7a-0456a7b80fc5",
+      "fields": {
+        "data": "2000-01-01",
+        "nome": "Ano Novo"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "896be860-197d-4e50-a39e-bd08d9615c3e",
+      "fields": {
+        "data": "2000-04-21",
+        "nome": "Tiradentes"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "a0be141d-3b96-4e60-99ba-6f9204d73f76",
+      "fields": {
+        "data": "2000-05-01",
+        "nome": "Dia do Trabalhador"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "089fea78-30dc-4c3a-931a-1d1d637181ef",
+      "fields": {
+        "data": "2000-09-07",
+        "nome": "Independência"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "3623e84c-7d3a-45b7-9855-5a06317b4fff",
+      "fields": {
+        "data": "2000-10-12",
+        "nome": "Nossa Senhora Aparecida"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "4e3fe57d-5321-4b9f-a651-813beb985043",
+      "fields": {
+        "data": "2000-11-02",
+        "nome": "Finados"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "63049033-3bde-4ebf-8ebb-bdc771b11308",
+      "fields": {
+        "data": "2000-11-15",
+        "nome": "Proclamação da República"
+      }
+    },
+    {
+      "model": "feriados.feriado",
+      "pk": "63049033-3bde-4ebf-8ebb-bdc771b11308",
+      "fields": {
+        "data": "2000-12-25",
+        "nome": "Natal"
+      }
+    }
+  ]
