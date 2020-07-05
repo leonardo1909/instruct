@@ -103,11 +103,6 @@ class FeriadoMovelSerializer(serializers.Serializer):
             pascoa_mes, pascoa_dia = Epoch.easter(ano)
             pascoa = datetime(ano, pascoa_mes, pascoa_dia)
             data = pascoa + timedelta(days=60)
-        elif str(self.context['view'].kwargs['feriado']).lower() == 'sexta-feira-santa':
-            ano = datetime.now().year
-            pascoa_mes, pascoa_dia = Epoch.easter(ano)
-            pascoa = datetime(ano, pascoa_mes, pascoa_dia)
-            data = pascoa - timedelta(days=2)
         elif str(self.context['view'].kwargs['feriado']).lower() == 'carnaval':
             ano = datetime.now().year
             pascoa_mes, pascoa_dia = Epoch.easter(ano)
@@ -121,7 +116,7 @@ class FeriadoMovelSerializer(serializers.Serializer):
             )
 
         feriado = Feriado(
-            nome=self.context['view'].kwargs['feriado'],
+            nome=self.context['view'].kwargs['feriado'].replace('-', ' ').title(),
             municipio=municipio,
             estado=estado,
             data=data
