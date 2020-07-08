@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from pymeeus.Epoch import Epoch
 
+from django.http import Http404
+
 from rest_framework import serializers
 from feriados.models import Feriado, Municipio, Estado
 
@@ -21,6 +23,10 @@ class FeriadoSerializer(serializers.Serializer):
         return instance
 
     def create(self, validated_data):
+        '''
+            Cria um feriado para o estado/municipio passado na data
+            especificada.
+        '''
         estado = None
         municipio = None
         try:
@@ -94,26 +100,25 @@ class FeriadoMovelSerializer(serializers.Serializer):
                     }
                 )
 
-        if str(self.context['view'].kwargs['feriado']).lower() == 'pascoa':
-            ano = datetime.now().year
-            pascoa_mes, pascoa_dia = Epoch.easter(ano)
-            data = datetime(ano, pascoa_mes, pascoa_dia)
-        elif str(self.context['view'].kwargs['feriado']).lower() == 'corpus-christi':
-            ano = datetime.now().year
-            pascoa_mes, pascoa_dia = Epoch.easter(ano)
+        ano = datetime.now().year
+        pascoa_mes, pascoa_dia = Epoch.easter(ano)
+        try:
             pascoa = datetime(ano, pascoa_mes, pascoa_dia)
-            data = pascoa + timedelta(days=60)
-        elif str(self.context['view'].kwargs['feriado']).lower() == 'carnaval':
-            ano = datetime.now().year
-            pascoa_mes, pascoa_dia = Epoch.easter(ano)
-            pascoa = datetime(ano, pascoa_mes, pascoa_dia)
-            data = pascoa - timedelta(days=47)
-        else:
+        except ValueError:
             raise serializers.ValidationError(
                 {
-                    'erro': 'O feriado inválido.'
+                    'erro': 'Data inválida.'
                 }
             )
+
+        if str(self.context['view'].kwargs['feriado']).lower() == 'pascoa':
+            data = pascoa
+        elif str(self.context['view'].kwargs['feriado']).lower() == 'corpus-christi':
+            data = pascoa + timedelta(days=60)
+        elif str(self.context['view'].kwargs['feriado']).lower() == 'carnaval':
+            data = pascoa - timedelta(days=47)
+        else:
+            raise Http404
 
         feriado = Feriado(
             nome=self.context['view'].kwargs['feriado'].replace('-', ' ').title(),

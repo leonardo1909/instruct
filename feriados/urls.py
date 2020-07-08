@@ -22,7 +22,7 @@ urlpatterns = [
         name='feriados'
     ),
     re_path(
-        r'feriados/(?P<municipio__codigo_ibge>[0-9]{7})/(?P<feriado>[\w]+[-[\w]+[-[\w]+)/',
+        r'feriados/(?P<municipio__codigo_ibge>[0-9]{7})/(?P<feriado>\w{3,}(|-?)\w*)/',
         FeriadoMovelViewSet.as_view(),
         name='feriados'
     )

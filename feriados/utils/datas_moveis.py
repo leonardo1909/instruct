@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from pymeeus.Epoch import Epoch
 
+from django.http import Http404
 from django.db.models import Q
 
 from feriados.models import Feriado
@@ -12,9 +13,12 @@ def verifica_feriado_movel(self, ano, mes, dia):
         Para feriados movéis que não são nacionais, verifica se o feriado
         já está cadastrado para o municipio.
     '''
-    data_analisada = datetime(int(ano), int(mes), int(dia))
-    pascoa_mes, pascoa_dia = Epoch.easter(int(ano))
-    pascoa = datetime(int(ano), pascoa_mes, pascoa_dia)
+    try:
+        data_analisada = datetime(int(ano), int(mes), int(dia))
+        pascoa_mes, pascoa_dia = Epoch.easter(int(ano))
+        pascoa = datetime(int(ano), pascoa_mes, pascoa_dia)
+    except ValueError:
+        raise Http404
 
     if data_analisada == pascoa - timedelta(days=2):
         return {

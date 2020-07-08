@@ -1,3 +1,6 @@
+from datetime import datetime, timedelta
+from pymeeus.Epoch import Epoch
+
 from django.http import Http404
 from django.db.models import Q
 
@@ -9,7 +12,8 @@ from rest_framework.generics import (
 )
 
 from feriados.utils.datas_moveis import verifica_feriado_movel
-from feriados.models import Feriado
+# from feriados.permissions import FeriadoNacionalPermission
+from feriados.models import Feriado, Estado, Municipio
 from feriados.serializers import (
     FeriadoSerializer, FeriadoMovelSerializer
 )
@@ -56,6 +60,20 @@ class FeriadoConsultaViewSet(RetrieveAPIView):
         return obj
 
     def retrieve(self, request, *args, **kwargs):
+        '''
+            Verifica se o estado/municipio é válido. Caso seja, verifica
+            se é um feriado móvel e, caso necessário, se o feriado está
+            cadastrado para o estado/municipio.
+        '''
+        estado = Estado.objects.filter(
+            codigo_ibge=self.kwargs[self.lookup_field]
+        )
+        municipio = Municipio.objects.filter(
+            codigo_ibge=self.kwargs[self.lookup_field]
+        )
+        if not estado and not municipio:
+            raise Http404
+
         sexta_santa = verifica_feriado_movel(
             self,
             ano=self.kwargs['ano'],
@@ -87,7 +105,7 @@ class FeriadoViewSet(CreateAPIView, UpdateAPIView, DestroyAPIView):
         try:
             obj = queryset.get(
                 Q(municipio__codigo_ibge=self.kwargs[self.lookup_field]) |
-                Q(estado__codigo_ibge=self.kwargs[self.lookup_field][:2])|
+                Q(estado__codigo_ibge=self.kwargs[self.lookup_field][:2]) |
                 (Q(estado__isnull=True) & Q(municipio__isnull=True)),
                 data__day=self.kwargs['dia'],
                 data__month=self.kwargs['mes']
@@ -98,6 +116,32 @@ class FeriadoViewSet(CreateAPIView, UpdateAPIView, DestroyAPIView):
         return obj
 
     def put(self, request, *args, **kwargs):
+        '''
+            Cria/atualiza feriados fixos.
+            Não é permitido o cadastro de feriados nacionais em
+            estados/municipios.
+        '''
+        ano = datetime.now().year
+        try:
+            data = datetime(
+                year=datetime.now().year,
+                month=int(kwargs['mes']),
+                day=int(kwargs['dia'])
+            )
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        feriado_nacional_fixo = Feriado.objects.filter(
+            (Q(estado__isnull=True) & Q(municipio__isnull=True)),
+            data=data
+        )
+
+        pascoa_mes, pascoa_dia = Epoch.easter(ano)
+        pascoa = datetime(ano, pascoa_mes, pascoa_dia)
+        sexta_santa = pascoa - timedelta(days=2)
+        if feriado_nacional_fixo or pascoa == data or sexta_santa == data:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
         try:
             return self.update(request, *args, **kwargs)
         except Http404:
